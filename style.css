@@ -118,37 +118,91 @@ ul li a:hover {
   background-color: #111111;
 }
 
- /* Estilos para centralizar o jogo perfeitamente no meio da página */
+   /* Estilos gerais da sua página */
         body {
             margin: 0;
             padding: 0;
-            background-color: #222; /* Cor de fundo da sua página */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        header, footer {
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        /* Área central da página onde o jogo vai morar */
+        main {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
+            padding: 20px;
         }
 
-        /* Container do jogo */
+        /* Container do Jogo (É isso aqui que vai virar tela cheia) */
         #game-container {
             text-align: center;
-            position: relative;
+            background-color: #222; /* Fundo escuro atrás do jogo */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
+            display: inline-block;
         }
 
-        /* O campo de futebol (Canvas) */
+        /* O Canvas do jogo */
         canvas {
-            border: 4px solid #fff;
-            box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
-            background-color: #388e3c; /* Verde do campo */
-            cursor: none; /* Esconde o mouse padrão dentro do jogo */
+            border: 3px solid #fff;
+            background-color: #388e3c;
+            cursor: none;
+            display: block;
+            margin: 0 auto;
         }
 
-        /* Placar */
-        #score-board {
+        /* Placar e controles superiores */
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             color: white;
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-size: 20px;
             font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Botão de Tela Cheia moderno */
+        #fullscreen-btn {
+            background-color: #0d47a1;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        #fullscreen-btn:hover {
+            background-color: #1565c0;
+        }
+
+        /* Configurações automáticas para quando entrar em Tela Cheia */
+        #game-container:fullscreen {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0;
+            padding: 0;
+        }
+        #game-container:fullscreen canvas {
+            max-width: 90vh; /* Garante que o jogo não distorça em telas largas */
+            max-height: 80vh;
         }
